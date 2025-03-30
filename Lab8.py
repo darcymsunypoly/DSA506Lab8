@@ -22,16 +22,18 @@ if category_filter != 'All':
 # KPIs
 st.title("E-commerce Sales Dashboard")
 col1, col2 = st.columns(2)
-with col1
+with col1:
     st.metric("Total Revenue", f"${df['Total'].sum():,.2f}")
-with col2    
+with col2:  
     st.metric("Total Orders", len(df))
 
 # Data Table
-st.subheader("Sales Data")
-st.dataframe(df)
+with col1:
+    st.subheader("Sales Data")
+    st.dataframe(df)
 
 # Chart
-st.subheader("Sales by Category")
-category_sales = df.groupby('Category')['Total'].sum().reset_index()
-st.bar_chart(category_sales.set_index('Category'))
+with col2:
+    st.subheader("Sales by Category")
+    category_sales = df.groupby('Category')['Total'].sum().reset_index()
+    st.bar_chart(category_sales.set_index('Category'))
