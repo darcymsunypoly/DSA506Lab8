@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+import streamlit as st
+
 data = {
     'Employee': [f'Employee {i}' for i in range(1, 21)],
     'Department': ['HR', 'IT', 'Marketing', 'Finance'] * 5,
